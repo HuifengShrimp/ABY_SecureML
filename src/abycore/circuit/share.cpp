@@ -42,6 +42,7 @@ void share::init(Circuit* circ, uint32_t maxbitlen) {
 }
 
 uint32_t share::get_wire_id(uint32_t pos_id) {
+	// std::cout << pos_id << ' ' << m_ngateids.size() << '\n';
 	assert(pos_id < m_ngateids.size());
 	return m_ngateids[pos_id];
 }

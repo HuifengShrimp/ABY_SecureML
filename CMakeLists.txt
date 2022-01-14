@@ -27,7 +27,7 @@ endif()
 if(NOT CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 endif()
-
+find_package(Boost 1.78.0 COMPONENTS system thread filesystem REQUIRED)
 find_package(ENCRYPTO_utils QUIET)
 if(ENCRYPTO_utils_FOUND)
     message(STATUS "Found ENCRYPTO_utils")
