@@ -1,0 +1,2 @@
+add_executable(linear_regression_test linear_regression_test.cpp common/linear_regression.cpp)
+target_link_libraries(linear_regression_test ABY::aby ENCRYPTO_utils::encrypto_utils)

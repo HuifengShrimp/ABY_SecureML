@@ -220,6 +220,7 @@ uint32_t ArithmeticCircuit::PutOUTGate(uint32_t parentid, e_role dst) {
 }
 
 share* ArithmeticCircuit::PutOUTGate(share* parent, e_role dst) {
+	// std::cout<<"test1\n";
 	share* shr = new arithshare(parent->get_bitlength(), this);
 	for (uint32_t i = 0; i < parent->get_bitlength(); i++) {
 		shr->set_wire_id(i, PutOUTGate(parent->get_wire_id(i), dst));

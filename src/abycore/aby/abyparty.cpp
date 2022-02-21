@@ -187,11 +187,13 @@ void ABYParty::ExecCircuit() {
 #ifndef BATCH
 	std::cout << "Finishing circuit generation" << std::endl;
 #endif
+	std::cout << "Connecting...\n";
 
 	ConnectAndBaseOTs();
 
 	StartRecording("Starting execution", P_TOTAL, m_vSockets);
 
+	std::cout << "Starting setup phase...\n";
 	//Setup phase
 	StartRecording("Starting setup phase: ", P_SETUP, m_vSockets);
 	for (uint32_t i = 0; i < m_vSharings.size(); i++) {
@@ -240,10 +242,13 @@ void ABYParty::ExecCircuit() {
 	std::cout << "Evaluating circuit" << std::endl;
 #endif
 
+	std::cout << "Evaluating...\n";
 	//Online phase
 	if(m_vSharings[S_BOOL]->GetPreCompPhaseValue() != ePreCompStore) {
 		StartRecording("Starting online phase: ", P_ONLINE, m_vSockets);
+		std::cout << "Start evaluating...\n";
 		EvaluateCircuit();
+		std::cout << "Finish evaluating...\n";
 		StopRecording("Time for online phase: ", P_ONLINE, m_vSockets);
 	}
 
@@ -264,6 +269,7 @@ void ABYParty::ExecCircuit() {
 #if PRINT_COMMUNICATION_STATS
 	PrintCommunication();
 #endif
+std:: cout << "Finish!\n ";
 }
 
 
@@ -331,6 +337,7 @@ BOOL ABYParty::EvaluateCircuit() {
 	for (uint32_t i = 0; i < m_vSharings.size(); i++) {
 		maxdepth = std::max(maxdepth, m_vSharings[i]->GetMaxCommunicationRounds());
 	}
+
 #if DEBUGABYPARTY
 	std::cout << "Starting online evaluation with maxdepth = " << maxdepth << std::endl;
 #endif
@@ -402,6 +409,7 @@ BOOL ABYParty::EvaluateCircuit() {
 	std::cout << "SPLUT: local gates: " << localops[S_SPLUT] << ", interactive gates: " << interactiveops[S_SPLUT] << ", layer finish: " << fincirclayer[S_SPLUT] << std::endl;
 	std::cout << "Communication: " << interaction << std::endl << std::endl;
 #endif
+	std::cout << "Finish Evaluating!\n";
 	return true;
 }
 

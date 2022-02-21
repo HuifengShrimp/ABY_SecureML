@@ -75,8 +75,8 @@ int32_t test_inner_product_circuit(e_role role, const std::string& address, uint
 	 */
 	for (i = 0; i < numbers; i++) {
 
-		x = rand();
-		y = rand();
+		x = i+1;
+		y = i+1;
 
 		v_sum += x * y;
 
